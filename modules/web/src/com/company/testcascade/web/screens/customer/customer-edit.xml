@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.testcascade.web.screens.customer">
+    <data>
+        <instance id="customerDc"
+                  class="com.company.testcascade.entity.Customer"
+                  view="_local">
+            <loader id="customerDl"/>
+        </instance>
+        <collection id="ordersDc" class="com.company.testcascade.entity.Order" view="order-view">
+            <loader id="ordersDl">
+                <query><![CDATA[select e from testcascade_Order e
+where e.customer = :customer]]></query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <vbox spacing="true">
+            <form id="form" dataContainer="customerDc">
+                <column width="250px">
+                    <textField id="nameField" property="name"/>
+                </column>
+            </form>
+            <button id="addOrder" caption="addOrder" invoke="onAddOrderClick"/>
+            <table id="ordersTable" height="100px" width="200px" dataContainer="ordersDc">
+                <columns>
+                    <column id="item"/>
+                </columns>
+            </table>
+        </vbox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

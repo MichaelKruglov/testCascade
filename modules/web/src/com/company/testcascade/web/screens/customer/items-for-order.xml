@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.company.testcascade.web.screens.customer">
+    <data>
+        <collection id="itemsDc" class="com.company.testcascade.entity.Item">
+            <loader id="itemsDl">
+                <query><![CDATA[select e from testcascade_Item e ]]></query>
+            </loader>
+        </collection>
+    </data>
+    <layout>
+        <vbox spacing="true">
+            <button id="chooseButton" invoke="onChooseButtonClick"
+                    caption="&#1042;&#1099;&#1073;&#1088;&#1072;&#1090;&#1100;"/>
+            <button id="cancel" caption="&#1054;&#1090;&#1084;&#1077;&#1085;&#1072;" invoke="onCancelClick"/>
+            <table id="itemsTable" height="100px" width="200px" dataContainer="itemsDc">
+                <columns>
+                    <column id="name"/>
+                </columns>
+            </table>
+        </vbox>
+    </layout>
+</window>

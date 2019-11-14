@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="testcascade_Customer" name="customer-view" extends="_local">
+        <property name="orders" view="_minimal">
+            <property name="customer" view="_minimal"/>
+            <property name="item" view="_minimal"/>
+        </property>
+    </view>
+    <view entity="testcascade_Order" name="order-view" extends="_local">
+        <property name="customer" view="_minimal"/>
+        <property name="item" view="_minimal"/>
+    </view>
+</views>
